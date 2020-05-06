@@ -22,6 +22,12 @@
           obnizB.getIO(2).output(false);
           obnizB.getIO(3).output(true);
           obnizB.uart0.start({tx:0, rx:1, baud:9600});
+          
+          var countup = function(){
+         console.log(count++);
+         }
+          
+          
          while(1){        
             $("#left").on("click",function(){
               GvsOutPut(1,4000);
@@ -32,6 +38,13 @@
                 obnizB.uart0.send(buffer1);
                 //console.log(buffer0,buffer1);
               obnizB.display.print(buffer0,buffer1);
+               var id = setInterval(function(){
+                countup();
+                 console.log(count
+                if(count > 5){　
+                  clearInterval(id);　//idをclearIntervalで指定している
+                }}, 1000);
+              
               });
             $("#right").on("click",function(){
               GvsOutPut(1,-4000);
